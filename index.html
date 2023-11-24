@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #36D1DC, #5B86E5); /* Gradient background */
+            color: white;
+            text-align: center;
+            margin: 100px;
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Place it behind other content */
+            background: linear-gradient(to right, #36D1DC, #5B86E5); /* Linear gradient for interaction */
+            animation: gradientAnimation 5s linear infinite; /* Continuous animation for the gradient */
+        }
+
+        @keyframes gradientAnimation {
+            from {
+                background-position: 0% 0%;
+            }
+            to {
+                background-position: 100% 100%;
+            }
+        }
+
+        #home-container {
+            margin-top: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .home-button {
+            margin: 10px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #FF0000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #videos-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .video-embed {
+            width: 45%; /* Adjust the width as needed */
+            height: 400px; /* Adjust the height as needed */
+        }
+    </style>
+</head>
+<body>
+
+    <button class="logout-button" onclick="logout()">Log Out</button>
+
+    <div id="home-container">
+        <h2>Welcome to the Home Page</h2>
+        <div class="button-container">
+            <button class="home-button" onclick="redirectToPage('physics.html')">HL Physics</button>
+            <button class="home-button" onclick="redirectToPage('math.html')">HL Math AA</button>
+            <button class="home-button" onclick="redirectToPage('econ.html')">HL Economics</button>
+            <button class="home-button" onclick="redirectToPage('chem.html')">SL Chemistry</button>
+            <button class="home-button" onclick="redirectToPage('english.html')">SL English</button>
+            <button class="home-button" onclick="redirectToPage('spanish.html')">SL Spanish Abinitio</button>
+        </div>
+
+        <div id="videos-container">
+            <iframe class="video-embed" width="560" height="400" src="https://www.youtube.com/embed/Lt54CX9DmS4" frameborder="0" allowfullscreen></iframe>
+            <iframe class="video-embed" width="560" height="400" src="https://www.youtube.com/embed/sdhmijg7oRY" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        function redirectToPage(page) {
+            window.location.href = page;
+        }
+
+        function logout() {
+            sessionStorage.removeItem('loggedIn'); // Remove login flag
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+    </script>
+
+</body>
+</html>
